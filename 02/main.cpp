@@ -1,5 +1,4 @@
-﻿#include <iostream>
-#include "fraction.h"
+﻿#include "fraction.h"
 
 int main(int argc, char** argv) {
 
