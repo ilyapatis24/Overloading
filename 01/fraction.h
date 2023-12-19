@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <iostream>
+#include <numeric>
 
 class Fraction
 {
@@ -9,7 +10,10 @@ private:
 
 public:
 	Fraction(int numerator, int denominator);
-	std::strong_ordering operator<=>(const Fraction&) const;
-	bool operator==(Fraction& f);
-	bool operator!=(Fraction& f);
+	bool operator==(Fraction& b);
+	bool operator!=(Fraction& b);
+	bool operator<(Fraction& b);
+	bool operator>(Fraction& b);
+	bool operator<=(Fraction& b);
+	bool operator>=(Fraction& b);
 };

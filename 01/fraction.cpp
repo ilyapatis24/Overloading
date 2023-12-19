@@ -6,13 +6,6 @@ Fraction::Fraction(int numerator, int denominator)
 	denominator_ = denominator;
 }
 
-std::strong_ordering Fraction::operator<=>(const Fraction&) const
-{
-	return std::strong_ordering();
-}
-
-//std::strong_ordering Fraction::operator<=>(const Fraction&) const = default;
-
 bool Fraction::operator==(Fraction& f)
 {
 	if (this->numerator_ == f.numerator_ && this->denominator_ == f.denominator_)
@@ -25,4 +18,41 @@ bool Fraction::operator==(Fraction& f)
 bool Fraction::operator!=(Fraction& f)
 {
 	return !(*this == f);
+}
+
+bool Fraction::operator<(Fraction& b)
+{
+	int scm_number = std::lcm(this->denominator_, b.denominator_);
+	if ((this->numerator_ * (scm_number / this->denominator_)) < (b.numerator_ * (scm_number / b.denominator_)))
+	{
+		return true;
+	}
+	return false;
+}
+
+bool Fraction::operator>(Fraction& b)
+{
+	if (!(*this < b) && (*this != b))
+	{
+		return true;
+	}
+	return false;
+}
+
+bool Fraction::operator<=(Fraction& b)
+{
+	if ((*this < b) || (*this == b))
+	{
+		return true;
+	}
+	return false;
+}
+
+bool Fraction::operator>=(Fraction& b)
+{
+	if ((*this > b) || (*this == b))
+	{
+		return true;
+	}
+	return false;
 }
